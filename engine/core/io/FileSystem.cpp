@@ -26,7 +26,11 @@ namespace yamaneko_engine::FileSystem {
 		}
 		std::stringstream buffer;
 		buffer << file.rdbuf();
-		return buffer.str();
+		std::string content = buffer.str();
+		if (content.starts_with("\xEF\xBB\xBF")) {
+			content.erase(0, 3);
+		}
+		return content;
 	}
 
 	bool WriteAllText(const std::string& path, const std::string& text) {

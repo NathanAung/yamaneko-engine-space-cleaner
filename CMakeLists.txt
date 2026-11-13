@@ -1,6 +1,6 @@
 ﻿cmake_minimum_required(VERSION 3.15)
 
-set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
+set(CMAKE_TOOLCHAIN_FILE "${USERPROFILE}/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE STRING "")
 
 project(YamanekoEngineProject CXX)
 
@@ -44,8 +44,8 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 )
 
 # 注意: assetsディレクトリが存在しない場合、コピーは失敗します。事前にassetsディレクトリを作成してください。
-add_custom_command(
-    TARGET ${TARGET_NAME} POST_BUILD
+add_custom_target(
+    CopyAssets ALL
     COMMAND ${CMAKE_COMMAND} -E copy_directory
             "${ASSETS_SRC_DIR}"
             "${ASSETS_DEST_DIR}"

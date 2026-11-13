@@ -8,10 +8,7 @@
       "generator": "Visual Studio 17 2022",
       "binaryDir": "${sourceDir}/build",
       "architecture": "x64",
-      "cacheVariables": {
-        "CMAKE_TOOLCHAIN_FILE": "${sourceDir}/vcpkg/scripts/buildsystems/vcpkg.cmake"
-      }
+      "cacheVariables": { "CMAKE_TOOLCHAIN_FILE": "${env.USERPROFILE}/vcpkg/scripts/buildsystems/vcpkg.cmake" }
     }
   ]
 }
-
